@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function TodoItem({ todo,key }) {
+export default function TodoItem({ todo }) {
   return (
-    <li key={key}>
+    <li>
       {todo}
     </li>
   );

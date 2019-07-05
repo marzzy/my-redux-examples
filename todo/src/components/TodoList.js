@@ -1,17 +1,25 @@
 import React from 'react';
-import TodoItem from './TodoItem'
+import { connect } from 'react-redux';
+import TodoItem from './TodoItem';
 
 const TodoList = ({todos}) => (
   <div>
     {todos && todos.length > 0
       ? <ul>
-          { todos.map( (item,index) => {
-              return <TodoItem todo={item} key={`id_${index}`}/>
-            })}
+          { todos.map( (item) => {
+            return <TodoItem todo={item.text} key={`ID_${item.key}`}/>
+            })
+          }
         </ul>
       : <p>there is no todos hny , u are so lucky </p>
     }
   </div>
 );
 
-export default TodoList;
+const mapStateToProps = state => {
+  return { todos: state.todos }
+}
+
+export default connect (
+  mapStateToProps
+)(TodoList)
