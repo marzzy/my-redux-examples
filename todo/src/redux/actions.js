@@ -22,3 +22,10 @@ export const SetPriorityAction = (todoId,priorityLevel) => ({
     priorityLevel
   }
 });
+
+export const SetVisibilityFilter = (filter) => ({
+  type: 'SET_FILTER',
+  payload: {
+    filter
+  }
+});
