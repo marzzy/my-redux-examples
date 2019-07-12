@@ -6,6 +6,10 @@ export default function (state = [] ,action) {
         { key: todoId, text: text }
       )
     }
+    case 'REMOVE_TODO': {
+      const { todoId } = action.payload;
+      return state.filter(item => item.key !== todoId)
+    }
     default:
       return state;
   }

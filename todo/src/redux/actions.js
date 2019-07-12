@@ -7,3 +7,10 @@ export const AddTodoAction = (text) => ({
     text
   }
 });
+
+export const RemoveTodoAcion = (todoId) => ({
+  type: 'REMOVE_TODO',
+  payload: {
+    todoId: todoId
+  }
+});
