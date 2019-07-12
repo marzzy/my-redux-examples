@@ -6,8 +6,8 @@ const TodoList = ({todos}) => (
   <div>
     {todos && todos.length > 0
       ? <ul>
-          { todos.map( (item) => {
-            return <TodoItem txt={item.text} todoKey={item.key} key={`ID_${item.key}`}/>
+          { todos.map( (item,index) => {
+            return <TodoItem todoListNumber={index} todo={item} key={`ID_${item.key}`}/>
             })
           }
         </ul>

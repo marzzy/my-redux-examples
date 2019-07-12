@@ -1,20 +1,34 @@
 import React from 'react';
 import  { connect } from 'react-redux';
-import { RemoveTodoAcion } from '../redux/actions';
+import { RemoveTodoAcion, SetPriorityAction } from '../redux/actions';
 
 class TodoItem extends React.Component {
 
   handleClick = () => {
-    const { todoKey, RemoveTodoAcion } = this.props;
-    RemoveTodoAcion(todoKey)
+    const { todo, RemoveTodoAcion } = this.props;
+    RemoveTodoAcion(todo.key)
   };
+
+  handleChange =(event) => {
+    const {SetPriorityAction , todo } = this.props;
+
+    SetPriorityAction(todo.key, event.target.value);
+  }
   
   render(){
-    const { txt } = this.props;
+    const { todo,todoListNumber } = this.props;
 
     return(
       <li>
-        <span> {txt} </span>
+        <span> {todoListNumber + 1 }. {todo.text} </span>
+
+        <select value={todo.prtiority} onChange={this.handleChange}>
+          <option value="no-priority">no priority</option>
+          <option value="low-priority">low priority</option>
+          <option value="mid-priority">mid priority</option>
+          <option value="high-priority">high priority</option>
+        </select>
+        
         <button onClick={this.handleClick}> X </button>
       </li>
     );
@@ -23,5 +37,8 @@ class TodoItem extends React.Component {
 
 export default connect(
   null,
-  {RemoveTodoAcion}
+  {
+    RemoveTodoAcion,
+    SetPriorityAction
+  }
 )(TodoItem);

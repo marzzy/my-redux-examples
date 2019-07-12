@@ -11,6 +11,14 @@ export const AddTodoAction = (text) => ({
 export const RemoveTodoAcion = (todoId) => ({
   type: 'REMOVE_TODO',
   payload: {
-    todoId: todoId
+    todoId
+  }
+});
+
+export const SetPriorityAction = (todoId,priorityLevel) => ({
+  type: 'SET_PRIORITY',
+  payload: {
+    todoId,
+    priorityLevel
   }
 });
